@@ -1,0 +1,42 @@
+/* === Estilos gerais === */
+:root {
+    --bg: #0b0d10;
+    --panel: #12161b;
+    --panel-2: #161c22;
+    --text: #e8eef5;
+    --muted: #a7b3c2;
+    --neon: #00ffa2;
+    --neon-link: #00ffff;
+    --border: #22303b;
+    --shadow: 0 10px 30px rgba(0,0,0,.35);
+    --radius: 18px;
+    --max: 1100px;
+  }
+  
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: linear-gradient(180deg, var(--bg), #0f1318 50%, var(--bg));
+    color: var(--text);
+    font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial;
+  }
+  .container { max-width: var(--max); margin: auto; padding: 0 20px; }
+  h1, h2 { color: var(--neon); animation: neon-glow 2s infinite alternate; }
+  @keyframes neon-glow { from { text-shadow: 0 0 5px var(--neon),0 0 10px var(--neon);} to { text-shadow: 0 0 20px var(--neon),0 0 30px var(--neon); } }
+  p { color: var(--text); }
+  a { color: var(--neon-link); text-decoration: none; font-weight: 600; transition: color 0.2s ease, text-shadow 0.2s ease; }
+  a:hover { color: var(--neon); text-shadow: 0 0 8px var(--neon),0 0 16px var(--neon); text-decoration: underline; }
+  header { position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(120%) blur(6px); background: linear-gradient(180deg, rgba(10,12,15,.92), rgba(10,12,15,.75)); border-bottom: 1px solid var(--border); }
+  .topbar { display: flex; gap: 16px; align-items: center; justify-content: space-between; padding: 14px 0; }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .logo { width: 36px; height: 36px; border-radius: 10px; background: radial-gradient(circle at 30% 30%, var(--neon), transparent 60%), radial-gradient(circle at 70% 70%, #39f, transparent 60%), linear-gradient(135deg, #0f1720, #0a0d12); box-shadow: 0 0 20px rgba(0,255,162,.25) inset, 0 0 20px rgba(51,153,255,.15) inset; }
+  .brand h1 { font-size: 1rem; letter-spacing: .3px; margin: 0; }
+  nav { display: flex; gap: 10px; flex-wrap: wrap; }
+  .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; border: 1px solid var(--border); background: var(--panel); color: var(--text); font-weight: 600; font-size: .9rem; box-shadow: var(--shadow); transition: transform .15s ease, border-color .15s ease; }
+  .pill:hover { transform: translateY(-1px); border-color: var(--neon); }
+  section { padding: 40px 0; border-bottom: 1px solid var(--border); }
+  section h2 { font-size: 1.5rem; margin-bottom: 10px; }
+  .divider { text-align: center; background: var(--neon); color: #111; padding: 30px; margin: 40px auto; font-size: 1.4rem; font-weight: bold; border-radius: 15px; max-width: var(--max); box-shadow: var(--shadow); }
+  footer { background: var(--panel-2); text-align: center; padding: 20px; margin-top: 20px; font-size: 0.9rem; border-top: 1px solid var(--border); color: var(--muted); }
+  
