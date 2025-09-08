@@ -1,1 +1,13 @@
 # trabalho-videogame
+# História dos Videogames
+
+Este é um site desenvolvido para um trabalho escolar, contando a evolução dos videogames desde os anos 70 até os anos 2000.
+
+## 🌐 Acesse o site
+Basta abrir o GitHub Pages (quando publicado) no link: https://SEU-USUARIO.github.io/historia-dos-videogames/
+
+
+## 📂 Estrutura do Projeto
+- `index.html` → Página principal com o conteúdo do site.
+- `styles.css` → Arquivo de estilos (cores, fontes, layout).
+- `README.md` → Este arquivo com informações do projeto.
