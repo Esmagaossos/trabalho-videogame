@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>História dos Videogames - Anos 90</title>
+    <style>
+        :root {
+            --bg: #0b0d10;
+            --panel: #12161b;
+            --panel-2: #161c22;
+            --text: #e8eef5;
+            --muted: #a7b3c2;
+            --neon: #00ccff;
+            --neon-link: #66ffff;
+            --border: #22303b;
+            --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+            --radius: 18px;
+            --max: 1100px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: linear-gradient(180deg, var(--bg), #0f1318 50%, var(--bg));
+            color: var(--text);
+            font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: var(--max);
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        h1,
+        h2 {
+            color: var(--neon);
+            animation: neon-glow 2s infinite alternate;
+        }
+
+        @keyframes neon-glow {
+            from {
+                text-shadow: 0 0 5px var(--neon), 0 0 10px var(--neon);
+            }
+
+            to {
+                text-shadow: 0 0 20px var(--neon), 0 0 30px var(--neon);
+            }
+        }
+
+        p {
+            color: var(--text);
+        }
+
+        a {
+            color: var(--neon-link);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s ease, text-shadow 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--neon);
+            text-shadow: 0 0 8px var(--neon), 0 0 16px var(--neon);
+            text-decoration: underline;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: saturate(120%) blur(6px);
+            background: linear-gradient(180deg, rgba(10, 12, 15, .92), rgba(10, 12, 15, .75));
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 30px;
+        }
+
+        .topbar {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 0;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: radial-gradient(circle at 30% 30%, var(--neon), transparent 60%), radial-gradient(circle at 70% 70%, #0099ff, transparent 60%), linear-gradient(135deg, #0f1720, #0a0d12);
+            box-shadow: 0 0 20px rgba(0, 204, 255, .25) inset, 0 0 20px rgba(102, 255, 255, .15) inset;
+        }
+
+        .brand h1 {
+            font-size: 1.5rem;
+            letter-spacing: .3px;
+            margin: 0;
+        }
+
+        .content {
+            background: var(--panel);
+            border-radius: var(--radius);
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .era-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .era-card {
+            background: var(--panel-2);
+            border-radius: var(--radius);
+            padding: 20px;
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease;
+        }
+
+        .era-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .era-card h3 {
+            color: var(--neon);
+            margin-top: 0;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }
+
+        .console-img {
+            width: 100%;
+            border-radius: 10px;
+            margin: 15px 0;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-voltar-home {
+            background: linear-gradient(45deg, var(--neon), var(--neon-link));
+            color: var(--bg);
+            padding: 12px 24px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 20px 0;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-voltar-home:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 204, 255, 0.4);
+        }
+
+        footer {
+            background: var(--panel-2);
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            border-radius: var(--radius);
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .link-highlight {
+            background: rgba(0, 204, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            border: 1px solid rgba(0, 204, 255, 0.3);
+        }
+
+        .search-links {
+            margin-top: 30px;
+            background: var(--panel-2);
+            padding: 20px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+
+        .search-links h3 {
+            color: var(--neon);
+            margin-top: 0;
+        }
+
+        @media (max-width: 768px) {
+            .era-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .topbar {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="topbar">
+                <div class="brand">
+                    <div class="logo"></div>
+                    <h1>História dos Videogames</h1>
+                </div>
+            </div>
+        </header>
+
+        <div class="content">
+            <h2>Anos 90: A Revolução 3D e a Guerra dos Consoles</h2>
+
+            <p>A década de 1990 marcou a transição dos gráficos 2D para o mundo tridimensional, com uma batalha épica
+                entre gigantes da indústria. Foi uma era de avanços tecnológicos extraordinários que redefiniram
+                completamente a experiência dos videogames.</p>
+
+            <div class="era-grid">
+                <div class="era-card">
+                    <h3><a href="https://www.google.com/search?q=Super+Nintendo+Entertainment+System+SNES"
+                            target="_blank" class="link-highlight">Super Nintendo (1991)</a></h3>
+                    <img src="img/Super Nintendo Entertainment System SNES.jpg"
+                        alt="Super Nintendo" class="console-img">
+                    <p>O <a href="https://www.google.com/search?q=SNES+16+bits" target="_blank">SNES elevou os gráficos
+                            2D ao seu ápice</a> com seu processador de 16-bits. Títulos como <a
+                            href="https://www.google.com/search?q=Super+Mario+World" target="_blank">Super Mario
+                            World</a>, <a href="https://www.google.com/search?q=The+Legend+of+Zelda+A+Link+to+the+Past"
+                            target="_blank">The Legend of Zelda: A Link to the Past</a> e <a
+                            href="https://www.google.com/search?q=Super+Metroid" target="_blank">Super Metroid</a> se
+                        tornaram obras-primas atemporais.</p>
+                </div>
+
+                <div class="era-card">
+                    <h3><a href="https://www.google.com/search?q=Sega+Genesis+Mega+Drive" target="_blank"
+                            class="link-highlight">Sega Genesis/Mega Drive (1989)</a></h3>
+                    <img src="img/Sega Genesis Mega Drive.webp"
+                        alt="Sega Genesis" class="console-img">
+                    <p>A resposta da Sega ao domínio da Nintendo. Com o slogan "Genesis does what Nintendon't" e a
+                        icônica franquia <a href="https://www.google.com/search?q=Sonic+the+Hedgehog"
+                            target="_blank">Sonic the Hedgehog</a>, a Sega conquistou o público adolescente com uma
+                        imagem mais "cool" e jogos mais rápidos.</p>
+                </div>
+
+                <div class="era-card">
+                    <h3><a href="https://www.google.com/search?q=Sony+PlayStation+1994" target="_blank"
+                            class="link-highlight">Sony PlayStation (1994)</a></h3>
+                    <img src="img/Sony PlayStation 1994.png"
+                        alt="Sony PlayStation" class="console-img">
+                    <p>Um divisor de águas na indústria. O <a href="https://www.google.com/search?q=PlayStation+CD-ROM"
+                            target="_blank">PlayStation popularizou os CDs</a> em vez de cartuchos, permitindo jogos 3D
+                        mais ambiciosos como <a href="https://www.google.com/search?q=Final+Fantasy+VII"
+                            target="_blank">Final Fantasy VII</a>, <a
+                            href="https://www.google.com/search?q=Metal+Gear+Solid" target="_blank">Metal Gear Solid</a>
+                        e <a href="https://www.google.com/search?q=Gran+Turismo" target="_blank">Gran Turismo</a>.</p>
+                </div>
+            </div>
+
+            <div class="era-grid">
+                <div class="era-card">
+                    <h3><a href="https://www.google.com/search?q=Nintendo+64+1996" target="_blank"
+                            class="link-highlight">Nintendo 64 (1996)</a></h3>
+                    <img src="img/N64-Console-Set.png"
+                        alt="Nintendo 64" class="console-img">
+                    <p>A aposta da Nintendo no 3D com cartuchos. Apesar das limitações de armazenamento, o N64 brilhou
+                        com <a href="https://www.google.com/search?q=Super+Mario+64" target="_blank">Super Mario 64</a>
+                        (que definiu o padrão para jogos 3D), <a
+                            href="https://www.google.com/search?q=The+Legend+of+Zelda+Ocarina+of+Time"
+                            target="_blank">The Legend of Zelda: Ocarina of Time</a> e <a
+                            href="https://www.google.com/search?q=GoldenEye+007" target="_blank">GoldenEye 007</a>.</p>
+                </div>
+
+                <div class="era-card">
+                    <h3><a href="https://www.google.com/search?q=Game+Boy+Color+1998" target="_blank"
+                            class="link-highlight">Game Boy Color (1998)</a></h3>
+                    <img src="img/Game Boy Color 1998.jpeg"
+                        alt="Game Boy Color" class="console-img">
+                    <p>A evolução do portátil mais popular do mundo. O Game Boy Color trouxe cores para a experiência
+                        portátil e consolidou o fenômeno <a href="https://www.google.com/search?q=Pokémon+Gold+Silver"
+                            target="_blank">Pokémon</a>, que se tornou uma das franquias mais lucrativas da história.
+                    </p>
+                </div>
+
+                <div class="era-card">
+                    <h3><a href="https://www.google.com/search?q=Sega+Saturn+1994" target="_blank"
+                            class="link-highlight">Sega Saturn (1994)</a></h3>
+                    <img src="img/Sega Saturn 1994.webp"
+                        alt="Sega Saturn" class="console-img">
+                    <p>O console mais complexo da Sega, com arquitetura de processadores múltiplos que dificultou o
+                        desenvolvimento. Apesar de seu sucesso no Japão com jogos de luta como <a
+                            href="https://www.google.com/search?q=Virtua+Fighter" target="_blank">Virtua Fighter</a>,
+                        teve dificuldades no mercado ocidental.</p>
+                </div>
+            </div>
+
+            <h3>A Revolução 3D</h3>
+            <p>Os anos 90 testemunharam a transição histórica dos gráficos 2D para o mundo tridimensional:</p>
+            <ul>
+                <li><a href="https://www.google.com/search?q=gráficos+3D+polygonal+anos+90" target="_blank">Grágicos 3D
+                        poligonais</a> substituíram os sprites 2D</li>
+                <li><a href="https://www.google.com/search?q=controle+analógico+joystick+N64" target="_blank">Controles
+                        analógicos</a> para melhor navegação em ambientes 3D</li>
+                <li><a href="https://www.google.com/search?q=CD-ROM+capacidade+armazenamento+jogos"
+                        target="_blank">CD-ROMs</a> permitiram Full Motion Video e trilhas sonoras orquestradas</li>
+                <li><a href="https://www.google.com/search?q=GPU+aceleração+3D+videogames" target="_blank">Processadores
+                        gráficos dedicados</a> para renderização 3D</li>
+                <li><a href="https://www.google.com/search?q=multiplayer+4+players+N64" target="_blank">Multiplayer para
+                        4 jogadores</a> se popularizou</li>
+            </ul>
+
+            <h3>Gêneros que Explodiram nos Anos 90</h3>
+            <p>Novos gêneros surgiram e outros se consolidaram durante a década:</p>
+            <ul>
+                <li><a href="https://www.google.com/search?q=FPS+First+Person+Shooter+anos+90"
+                        target="_blank">First-Person Shooters (FPS)</a> - Doom, Quake, GoldenEye</li>
+                <li><a href="https://www.google.com/search?q=survival+horror+anos+90" target="_blank">Survival
+                        Horror</a> - Resident Evil, Silent Hill</li>
+                <li><a href="https://www.google.com/search?q=RPG+3D+anos+90" target="_blank">RPGs em 3D</a> - Final
+                    Fantasy VII, Baldur's Gate</li>
+                <li><a href="https://www.google.com/search?q=stealth+action+anos+90" target="_blank">Stealth Action</a>
+                    - Metal Gear Solid, Tenchu</li>
+                <li><a href="https://www.google.com/search?q=collectathon+platformer" target="_blank">Collectathon
+                        Platformers</a> - Banjo-Kazooie, Spyro</li>
+            </ul>
+
+            <h3>A Guerra dos Consoles</h3>
+            <p>A década testemunhou uma das maiores batalhas da indústria:</p>
+            <ul>
+                <li><a href="https://www.google.com/search?q=Nintendo+vs+Sega+anos+90" target="_blank">Nintendo vs
+                        Sega</a> - A batalha entre Mario e Sonic</li>
+                <li><a href="https://www.google.com/search?q=Sony+entrada+mercado+videogames" target="_blank">A entrada
+                        da Sony</a> no mercado com o PlayStation</li>
+                <li><a href="https://www.google.com/search?q=mudança+demográfica+jogadores+anos+90"
+                        target="_blank">Mudança demográfica</a> - Jogos para adolescentes e adultos</li>
+                <li><a href="https://www.google.com/search?q=marketing+agressivo+anos+90" target="_blank">Marketing
+                        agressivo</a> e campanhas publicitárias memoráveis</li>
+                <li><a href="https://www.google.com/search?q=preço+consoles+anos+90" target="_blank">Guerra de
+                        preços</a> e bundles promocionais</li>
+            </ul>
+
+            <h3>O Legado dos Anos 90</h3>
+            <p>A década de 1990 transformou os videogames de um hobby de nicho em uma indústria global bilionária. Foi
+                uma era de experimentação audaciosa, onde desenvolvedores exploravam as possibilidades do 3D e criavam
+                gêneros que definiram os padrões para as décadas seguintes.</p>
+
+            <p>Os anos 90 também marcaram o início da <a
+                    href="https://www.google.com/search?q=globalização+indústria+videogames"
+                    target="_blank">globalização da indústria</a>, com jogos japoneses conquistando o Ocidente e
+                desenvolvedoras ocidentais ganhando destaque. A década terminou com a Sony estabelecida como nova líder
+                do mercado, a Nintendo mantendo sua base fiel e a Sega começando a mostrar sinais de dificuldades que
+                culminariam em sua saída do mercado de hardware.</p>
+
+            <div class="search-links">
+                <h3>Pesquisar mais sobre:</h3>
+                <p>
+                    <a href="https://www.google.com/search?q=história+dos+videogames+anos+90" target="_blank"
+                        class="link-highlight">História dos Videogames anos 90</a> |
+                    <a href="https://www.google.com/search?q=consoles+16+bits+32+bits" target="_blank"
+                        class="link-highlight">Consoles 16-bits e 32-bits</a> |
+                    <a href="https://www.google.com/search?q=transição+2D+para+3D" target="_blank"
+                        class="link-highlight">Transição 2D para 3D</a> |
+                    <a href="https://www.google.com/search?q=guerra+dos+consoles+anos+90" target="_blank"
+                        class="link-highlight">Guerra dos Consoles anos 90</a>
+                </p>
+            </div>
+
+            <a href="index.html" class="btn-voltar-home">🏠 Voltar para a Página Principal</a>
+        </div>
+
+        <footer>
+            <p>Trabalho sobre a História dos Videogames - Desenvolvido para fins educacionais</p>
+            <p>© 2023 - Todos os direitos reservados</p>
+        </footer>
+    </div>
+
+    <script>
+        // Adiciona comportamento de abertura em nova guia para todos os links externos
+        document.addEventListener('DOMContentLoaded', function () {
+            const links = document.querySelectorAll('a[href^="http"]');
+            links.forEach(link => {
+                link.setAttribute('target', '_blank');
+                link.setAttribute('rel', 'noopener noreferrer');
+            });
+        });
+    </script>
+</body>
+
+</html>

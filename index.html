@@ -4,7 +4,336 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>História dos Videogames – Do Pong ao Presente</title>
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+      --bg: #0b0d10;
+      --panel: #12161b;
+      --panel-2: #161c22;
+      --text: #e8eef5;
+      --muted: #a7b3c2;
+      --neon: #ff0080;
+      --neon-link: #ff66b2;
+      --border: #22303b;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1200px;
+    }
+    
+    * { 
+      box-sizing: border-box; 
+      margin: 0;
+      padding: 0;
+    }
+    
+    html { 
+      scroll-behavior: smooth; 
+    }
+    
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, var(--bg), #0f1318 50%, var(--bg));
+      color: var(--text);
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial;
+      min-height: 100vh;
+      padding: 0;
+    }
+    
+    .container { 
+      max-width: var(--max); 
+      margin: auto; 
+      padding: 0 20px; 
+    }
+    
+    h1, h2 { 
+      color: var(--neon); 
+      animation: neon-glow 2s infinite alternate; 
+    }
+    
+    @keyframes neon-glow { 
+      from { text-shadow: 0 0 5px var(--neon),0 0 10px var(--neon);} 
+      to { text-shadow: 0 0 20px var(--neon),0 0 30px var(--neon); } 
+    }
+    
+    p { color: var(--text); }
+    a { color: var(--neon-link); text-decoration: none; font-weight: 600; transition: color 0.2s ease, text-shadow 0.2s ease; }
+    a:hover { color: var(--neon); text-shadow: 0 0 8px var(--neon),0 0 16px var(--neon); }
+    
+    header { 
+      position: sticky; 
+      top: 0; 
+      z-index: 50; 
+      backdrop-filter: saturate(120%) blur(6px); 
+      background: linear-gradient(180deg, rgba(10,12,15,.92), rgba(10,12,15,.75)); 
+      border-bottom: 1px solid var(--border); 
+      margin-bottom: 0;
+    }
+    
+    .topbar { 
+      display: flex; 
+      gap: 16px; 
+      align-items: center; 
+      justify-content: center; 
+      padding: 20px 0; 
+    }
+    
+    .brand { 
+      display: flex; 
+      align-items: center; 
+      gap: 12px; 
+    }
+    
+    .logo { 
+      width: 42px; 
+      height: 42px; 
+      border-radius: 10px; 
+      background: radial-gradient(circle at 30% 30%, var(--neon), transparent 60%), radial-gradient(circle at 70% 70%, #ff66b2, transparent 60%), linear-gradient(135deg, #0f1720, #0a0d12); 
+      box-shadow: 0 0 20px rgba(255,0,128,.25) inset, 0 0 20px rgba(255,102,178,.15) inset; 
+    }
+    
+    .brand h1 { 
+      font-size: 1.8rem; 
+      letter-spacing: .3px; 
+      margin: 0; 
+    }
+    
+    .hero {
+      padding: 100px 0;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(255,0,128,0.1) 0%, rgba(0,0,0,0) 50%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 30% 50%, rgba(255,0,128,0.05) 0%, rgba(0,0,0,0) 70%);
+      z-index: -1;
+    }
+    
+    .hero h2 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      background: linear-gradient(45deg, var(--neon), var(--neon-link));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: none;
+      text-shadow: none;
+    }
+    
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+    
+    .timeline {
+      padding: 80px 0;
+      background: var(--panel);
+    }
+    
+    .timeline h2 {
+      text-align: center;
+      margin-bottom: 50px;
+      font-size: 2.8rem;
+    }
+    
+    .eras-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+    
+    .era-card {
+      background: var(--panel-2);
+      border-radius: var(--radius);
+      padding: 35px 30px;
+      border: 1px solid var(--border);
+      transition: all 0.4s ease;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .era-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--neon), var(--neon-link));
+    }
+    
+    .era-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+    
+    .era-card h3 {
+      color: var(--neon);
+      margin: 20px 0 15px;
+      font-size: 1.7rem;
+    }
+    
+    .era-card p {
+      color: var(--muted);
+      margin-bottom: 25px;
+      line-height: 1.7;
+    }
+    
+    .era-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      background: var(--panel);
+      border: 3px solid var(--border);
+      transition: all 0.3s ease;
+    }
+    
+    .era-card:hover .era-icon {
+      transform: scale(1.1);
+      border-color: var(--neon);
+    }
+    
+    .btn-explore {
+      background: linear-gradient(45deg, var(--neon), var(--neon-link));
+      color: var(--bg);
+      padding: 12px 28px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+    }
+    
+    .btn-explore:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(255, 0, 128, 0.5);
+    }
+    
+    .highlights {
+      padding: 80px 0;
+      background: var(--bg);
+    }
+    
+    .highlights h2 {
+      text-align: center;
+      margin-bottom: 50px;
+      font-size: 2.8rem;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+    
+    .stat-card {
+      background: var(--panel-2);
+      border-radius: var(--radius);
+      padding: 30px 25px;
+      border: 1px solid var(--border);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    
+    .stat-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .stat-number {
+      font-size: 3rem;
+      font-weight: bold;
+      color: var(--neon);
+      margin-bottom: 15px;
+    }
+    
+    .stat-label {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+    
+    footer { 
+      background: var(--panel-2); 
+      text-align: center; 
+      padding: 40px; 
+      margin-top: 0; 
+      font-size: 1rem; 
+      border-top: 1px solid var(--border); 
+      color: var(--muted); 
+    }
+    
+    footer p {
+      margin-bottom: 10px;
+    }
+    
+    @media (max-width: 768px) {
+      .topbar {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+      }
+      
+      .hero h2 {
+        font-size: 2.5rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+        padding: 0 20px;
+      }
+      
+      .eras-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+      
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .timeline h2, .highlights h2 {
+        font-size: 2.2rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .hero h2 {
+        font-size: 2rem;
+      }
+      
+      .brand h1 {
+        font-size: 1.5rem;
+      }
+      
+      .logo {
+        width: 36px;
+        height: 36px;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -13,83 +342,90 @@
         <div class="logo"></div>
         <h1>História dos Videogames</h1>
       </div>
-      <nav>
-        <a href="#anos70" class="pill">Anos 70</a>
-        <a href="#anos80" class="pill">Anos 80</a>
-        <a href="#anos90" class="pill">Anos 90</a>
-        <a href="#anos2000" class="pill">Anos 2000</a>
-        <a href="#atualidade" class="pill">Atualidade</a>
-      </nav>
     </div>
   </header>
-
-  <section id="anos70" class="container">
-    <h2>Anos 70</h2>
-    <p>
-      O início dos videogames com <a href="https://pt.wikipedia.org/wiki/Pong" target="_blank">Pong</a> e o 
-      <a href="https://pt.wikipedia.org/wiki/Magnavox_Odyssey" target="_blank">Magnavox Odyssey</a>, os primeiros consoles caseiros.
-    </p>
-  </section>
-
-  <section id="anos80" class="container">
-    <h2>Anos 80</h2>
-    <p>
-      A era de ouro dos arcades com <a href="https://pt.wikipedia.org/wiki/Pac-Man" target="_blank">Pac-Man</a> e 
-      <a href="https://pt.wikipedia.org/wiki/Donkey_Kong" target="_blank">Donkey Kong</a>. 
-      A indústria quase entrou em colapso no famoso <a href="https://en.wikipedia.org/wiki/Video_game_crash_of_1983" target="_blank">Crash dos Videogames</a>. 
-      A Nintendo salva o mercado com o <a href="https://pt.wikipedia.org/wiki/Nintendo_Entertainment_System" target="_blank">NES</a> e nasce a franquia <a href="https://pt.wikipedia.org/wiki/Super_Mario_Bros." target="_blank">Super Mario Bros</a>.
-    </p>
-  </section>
-
-  <section id="anos90" class="container">
-    <h2>Anos 90</h2>
-    <p>
-      Disputa entre <a href="https://pt.wikipedia.org/wiki/Sega_Mega_Drive" target="_blank">Sega Mega Drive</a> e 
-      <a href="https://pt.wikipedia.org/wiki/Super_Nintendo_Entertainment_System" target="_blank">Super Nintendo</a>. 
-      Consoles portáteis como <a href="https://pt.wikipedia.org/wiki/Game_Boy" target="_blank">Game Boy</a> se popularizam. 
-      Chegada do 3D com <a href="https://pt.wikipedia.org/wiki/PlayStation" target="_blank">PlayStation 1</a> e 
-      <a href="https://pt.wikipedia.org/wiki/Nintendo_64" target="_blank">Nintendo 64</a>. 
-      Jogos icônicos: <a href="https://pt.wikipedia.org/wiki/Final_Fantasy_VII" target="_blank">Final Fantasy VII</a>, 
-      <a href="https://pt.wikipedia.org/wiki/The_Legend_of_Zelda:_Ocarina_of_Time" target="_blank">The Legend of Zelda: Ocarina of Time</a> 
-      e <a href="https://pt.wikipedia.org/wiki/Resident_Evil" target="_blank">Resident Evil</a>.
-    </p>
-  </section>
-
-  <div class="divider">
-    🚀 A virada do milênio mudou os games para sempre! 🚀
-  </div>
-
-  <section id="anos2000" class="container">
-    <h2>Anos 2000</h2>
-    <p>
-      Consoles: <a href="https://pt.wikipedia.org/wiki/PlayStation_2" target="_blank">PlayStation 2</a>, 
-      <a href="https://pt.wikipedia.org/wiki/Xbox_(console)" target="_blank">Xbox</a> e 
-      <a href="https://en.wikipedia.org/wiki/Nintendo_GameCube" target="_blank">Nintendo GameCube</a>. 
-      Expansão do online com <a href="https://pt.wikipedia.org/wiki/Xbox_Live" target="_blank">Xbox Live</a>. 
-      Jogos de PC famosos: <a href="https://en.wikipedia.org/wiki/World_of_Warcraft" target="_blank">World of Warcraft</a> e 
-      <a href="https://pt.wikipedia.org/wiki/The_Sims" target="_blank">The Sims</a>. 
-      Novas franquias: <a href="https://en.wikipedia.org/wiki/Halo_(series)" target="_blank">Halo</a>, 
-      <a href="https://en.wikipedia.org/wiki/God_of_War_(franchise)" target="_blank">God of War</a> e 
-      <a href="https://pt.wikipedia.org/wiki/Grand_Theft_Auto_III" target="_blank">GTA III</a>.
-    </p>
-  </section>
-
-  <section id="atualidade" class="container">
-    <h2>Atualidade</h2>
-    <p>
-      Consoles modernos: <a href="https://pt.wikipedia.org/wiki/PlayStation_5" target="_blank">PlayStation 5</a>, 
-      <a href="https://pt.wikipedia.org/wiki/Xbox_Series_X_and_Series_S" target="_blank">Xbox Series X</a>, 
-      <a href="https://pt.wikipedia.org/wiki/Nintendo_Switch" target="_blank">Nintendo Switch</a>. 
-      Crescimento dos <a href="https://pt.wikipedia.org/wiki/Esports" target="_blank">eSports</a> (campeonatos de LoL, CS:GO, Valorant). 
-      Popularização de streaming: <a href="https://pt.wikipedia.org/wiki/Twitch" target="_blank">Twitch</a>, 
-      <a href="https://pt.wikipedia.org/wiki/YouTube_Gaming" target="_blank">YouTube Gaming</a>. 
-      Jogos populares: <a href="https://pt.wikipedia.org/wiki/Fortnite" target="_blank">Fortnite</a> e 
-      <a href="https://pt.wikipedia.org/wiki/Minecraft" target="_blank">Minecraft</a>.
-    </p>
-  </section>
-
+  
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h2>Do Pong ao PlayStation 5</h2>
+        <p>Uma jornada épica através das décadas que moldaram a indústria de videogames como a conhecemos hoje. Descubra a evolução dos gráficos, jogabilidade e tecnologia que transformaram o entretenimento digital.</p>
+        <a href="#timeline" class="btn-explore">Explorar Linha do Tempo</a>
+      </div>
+    </section>
+    
+    <section class="timeline" id="timeline">
+      <div class="container">
+        <h2>A Evolução dos Videogames</h2>
+        <div class="eras-grid">
+          <div class="era-card">
+            <div class="era-icon">🎮</div>
+            <h3>Anos 70</h3>
+            <p>O nascimento da indústria com Pong, Atari e os primeiros arcades que conquistaram o mundo.</p>
+            <a href="anos70.html" class="btn-explore">Explorar Era</a>
+          </div>
+          
+          <div class="era-card">
+            <div class="era-icon">👾</div>
+            <h3>Anos 80</h3>
+            <p>A era de ouro dos arcades, o crash de 1983 e o renascimento com o Nintendo Entertainment System.</p>
+            <a href="anos80.html" class="btn-explore">Explorar Era</a>
+          </div>
+          
+          <div class="era-card">
+            <div class="era-icon">🕹️</div>
+            <h3>Anos 90</h3>
+            <p>A guerra dos 16-bits entre Nintendo e Sega, e a revolução 3D com PlayStation e Nintendo 64.</p>
+            <a href="anos90.html" class="btn-explore">Explorar Era</a>
+          </div>
+          
+          <div class="era-card">
+            <div class="era-icon">🎯</div>
+            <h3>Anos 2000</h3>
+            <p>A era online, gráficos em HD, Xbox Live e o surgimento dos jogos como serviço.</p>
+            <a href="anos2000.html" class="btn-explore">Explorar Era</a>
+          </div>
+          
+          <div class="era-card">
+            <div class="era-icon">🚀</div>
+            <h3>Atualidade</h3>
+            <p>Cloud gaming, realidade virtual, ray tracing e o futuro dos videogames na palma da mão.</p>
+            <a href="atualidade.html" class="btn-explore">Explorar Era</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="highlights">
+      <div class="container">
+        <h2>Números que Impressionam</h2>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Anos de História</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">3B+</div>
+            <div class="stat-label">Jogadores no Mundo</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">$200B+</div>
+            <div class="stat-label">Faturamento Anual</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">100K+</div>
+            <div class="stat-label">Jogos Lançados</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
   <footer>
-    <p>Site criado para trabalho escolar - História dos Videogames 🎮</p>
+    <div class="container">
+      <p>Site criado para trabalho escolar - História dos Videogames 🎮</p>
+      <p>Uma jornada através das décadas que transformaram o entretenimento digital</p>
+    </div>
   </footer>
 </body>
 </html>

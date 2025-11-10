@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>História dos Videogames - Atualidade</title>
+    <style>
+        :root {
+            --bg: #0b0d10;
+            --panel: #12161b;
+            --panel-2: #161c22;
+            --text: #e8eef5;
+            --muted: #a7b3c2;
+            --neon: #00ff88;
+            --neon-link: #66ffaa;
+            --border: #22303b;
+            --shadow: 0 10px 30px rgba(0,0,0,.35);
+            --radius: 18px;
+            --max: 1100px;
+        }
+        
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            background: linear-gradient(180deg, var(--bg), #0f1318 50%, var(--bg));
+            color: var(--text);
+            font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container { 
+            max-width: var(--max); 
+            margin: auto; 
+            padding: 0 20px; 
+        }
+        
+        h1, h2 { 
+            color: var(--neon); 
+            animation: neon-glow 2s infinite alternate; 
+        }
+        
+        @keyframes neon-glow { 
+            from { text-shadow: 0 0 5px var(--neon),0 0 10px var(--neon);} 
+            to { text-shadow: 0 0 20px var(--neon),0 0 30px var(--neon); } 
+        }
+        
+        p { color: var(--text); }
+        a { color: var(--neon-link); text-decoration: none; font-weight: 600; transition: color 0.2s ease, text-shadow 0.2s ease; }
+        a:hover { color: var(--neon); text-shadow: 0 0 8px var(--neon),0 0 16px var(--neon); text-decoration: underline; }
+        
+        header { 
+            position: sticky; 
+            top: 0; 
+            z-index: 50; 
+            backdrop-filter: saturate(120%) blur(6px); 
+            background: linear-gradient(180deg, rgba(10,12,15,.92), rgba(10,12,15,.75)); 
+            border-bottom: 1px solid var(--border); 
+            margin-bottom: 30px;
+        }
+        
+        .topbar { 
+            display: flex; 
+            gap: 16px; 
+            align-items: center; 
+            justify-content: space-between; 
+            padding: 14px 0; 
+        }
+        
+        .brand { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+        }
+        
+        .logo { 
+            width: 36px; 
+            height: 36px; 
+            border-radius: 10px; 
+            background: radial-gradient(circle at 30% 30%, var(--neon), transparent 60%), radial-gradient(circle at 70% 70%, #00cc66, transparent 60%), linear-gradient(135deg, #0f1720, #0a0d12); 
+            box-shadow: 0 0 20px rgba(0,255,136,.25) inset, 0 0 20px rgba(102,255,170,.15) inset; 
+        }
+        
+        .brand h1 { 
+            font-size: 1.5rem; 
+            letter-spacing: .3px; 
+            margin: 0; 
+        }
+        
+        .content {
+            background: var(--panel);
+            border-radius: var(--radius);
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+        
+        .era-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .era-card {
+            background: var(--panel-2);
+            border-radius: var(--radius);
+            padding: 20px;
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease;
+        }
+        
+        .era-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .era-card h3 {
+            color: var(--neon);
+            margin-top: 0;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }
+        
+        .console-img {
+            width: 100%;
+            border-radius: 10px;
+            margin: 15px 0;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-voltar-home {
+            background: linear-gradient(45deg, var(--neon), var(--neon-link));
+            color: var(--bg);
+            padding: 12px 24px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 20px 0;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-voltar-home:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 255, 136, 0.4);
+        }
+        
+        footer { 
+            background: var(--panel-2); 
+            text-align: center; 
+            padding: 20px; 
+            margin-top: 40px; 
+            font-size: 0.9rem; 
+            border-top: 1px solid var(--border); 
+            color: var(--muted); 
+            border-radius: var(--radius);
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        .link-highlight {
+            background: rgba(0, 255, 136, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+        }
+        
+        .search-links {
+            margin-top: 30px;
+            background: var(--panel-2);
+            padding: 20px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+        
+        .search-links h3 {
+            color: var(--neon);
+            margin-top: 0;
+        }
+        
+        .search-links p {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .search-links a {
+            white-space: nowrap;
+        }
+        
+        .trend-badge {
+            background: linear-gradient(45deg, var(--neon), var(--neon-link));
+            color: var(--bg);
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+        
+        @media (max-width: 768px) {
+            .era-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .topbar {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .search-links p {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="topbar">
+                <div class="brand">
+                    <div class="logo"></div>
+                    <h1>História dos Videogames</h1>
+                </div>
+            </div>
+        </header>
+        
+        <div class="content">
+            <h2>Atualidade: A Era dos Serviços e Cloud Gaming</h2>
+            
+            <p>A era atual dos videogames é marcada pela convergência de tecnologias, serviços de assinatura e a promessa do cloud gaming. Vivemos uma transição dos modelos tradicionais de propriedade para ecossistemas digitais interconectados, onde a acessibilidade e a conveniencia se tornaram prioridades.</p>
+            
+            <div class="era-grid">
+                <div class="era-card">
+                    <h3><a href="https://www.google.com/search?q=PlayStation+5+2020" target="_blank" class="link-highlight">PlayStation 5 (2020)</a></h3>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/PlayStation_5_and_DualSense_with_transparent_background.png/640px-PlayStation_5_and_DualSense_with_transparent_background.png" alt="PlayStation 5" class="console-img">
+                    <p>A nova geração da Sony com <a href="https://www.google.com/search?q=SSD+ultra-rápido+PS5" target="_blank">SSD ultra-rápido</a>, ray tracing e o inovador controle <a href="https://www.google.com/search?q=DualSense+feedback+háptico" target="_blank">DualSense com feedback háptico</a>. Destaques: <a href="https://www.google.com/search?q=Spider-Man+Miles+Morales" target="_blank">Spider-Man: Miles Morales</a>, <a href="https://www.google.com/search?q=Demon%27s+Souls+remake" target="_blank">Demon's Souls</a> e <a href="https://www.google.com/search?q=Horizon+Forbidden+West" target="_blank">Horizon Forbidden West</a>.</p>
+                </div>
+                
+                <div class="era-card">
+                    <h3><a href="https://www.google.com/search?q=Xbox+Series+X+S+2020" target="_blank" class="link-highlight">Xbox Series X/S (2020)</a></h3>
+                    <img src="img/Xbox Series X S 2020.png" alt="Xbox Series X e S" class="console-img">
+                    <p>A estratégia dual da Microsoft: Series X para performance máxima e Series S para acesso acessível. Foco no <a href="https://www.google.com/search?q=Xbox+Game+Pass" target="_blank">Xbox Game Pass</a> como serviço principal. Destaques: <a href="https://www.google.com/search?q=Halo+Infinite" target="_blank">Halo Infinite</a>, <a href="https://www.google.com/search?q=Forza+Horizon+5" target="_blank">Forza Horizon 5</a> e <a href="https://www.google.com/search?q=Starfield" target="_blank">Starfield</a>.</p>
+                </div>
+                
+                <div class="era-card">
+                    <h3><a href="https://www.google.com/search?q=Nintendo+Switch+2017" target="_blank" class="link-highlight">Nintendo Switch (2017)</a></h3>
+                    <img src="img/Nintendo Switch 2017.jpg" alt="Nintendo Switch" class="console-img">
+                    <p>O conceito híbrido que revolucionou o mercado. <a href="https://www.google.com/search?q=Switch+console+híbrido" target="_blank">Console de mesa e portátil</a> em um só dispositivo. Fenômenos: <a href="https://www.google.com/search?q=The+Legend+of+Zelda+Breath+of+the+Wild" target="_blank">The Legend of Zelda: Breath of the Wild</a>, <a href="https://www.google.com/search?q=Animal+Crossing+New+Horizons" target="_blank">Animal Crossing: New Horizons</a> e <a href="https://www.google.com/search?q=Super+Mario+Odyssey" target="_blank">Super Mario Odyssey</a>.</p>
+                </div>
+            </div>
+
+            <div class="era-grid">
+                <div class="era-card">
+                    <h3><a href="https://www.google.com/search?q=PC+Gaming+atualidade" target="_blank" class="link-highlight">PC Gaming <span class="trend-badge">EM ALTA</span></a></h3>
+                    <img src="img/PC Gaming atualidade.avif" alt="PC Gaming" class="console-img">
+                    <p>A plataforma mais versátil com <a href="https://www.google.com/search?q=RTX+ray+tracing" target="_blank">tecnologia RTX</a>, altas taxas de atualização e modding. Mercado em expansão com <a href="https://www.google.com/search?q=Steam+Deck" target="_blank">Steam Deck</a> e <a href="https://www.google.com/search?q=PC+portáteis" target="_blank">PCs portáteis</a>. Destaques: <a href="https://www.google.com/search?q=Cyberpunk+2077" target="_blank">Cyberpunk 2077</a>, <a href="https://www.google.com/search?q=Baldur%27s+Gate+3" target="_blank">Baldur's Gate 3</a>.</p>
+                </div>
+                
+                <div class="era-card">
+                    <h3><a href="https://www.google.com/search?q=Cloud+Gaming+streaming" target="_blank" class="link-highlight">Cloud Gaming <span class="trend-badge">FUTURO</span></a></h3>
+                    <img src="img/Cloud Gaming streaming.jpg" alt="Cloud Gaming" class="console-img">
+                    <p>Jogos via streaming sem necessidade de hardware potente. Principais serviços: <a href="https://www.google.com/search?q=Xbox+Cloud+Gaming" target="_blank">Xbox Cloud Gaming</a>, <a href="https://www.google.com/search?q=NVIDIA+GeForce+Now" target="_blank">NVIDIA GeForce Now</a>, <a href="https://www.google.com/search?q=Amazon+Luna" target="_blank">Amazon Luna</a> e <a href="https://www.google.com/search?q=PlayStation+Plus+Premium" target="_blank">PlayStation Plus Premium</a>.</p>
+                </div>
+                
+                <div class="era-card">
+                    <h3><a href="https://www.google.com/search?q=Mobile+Gaming+2020s" target="_blank" class="link-highlight">Mobile Gaming <span class="trend-badge">DOMINANTE</span></a></h3>
+                    <img src="img/Mobile Gaming 2020s.webp" alt="Mobile Gaming" class="console-img">
+                    <p>O segmento que mais cresce e gera receita. Fenômenos: <a href="https://www.google.com/search?q=Genshin+Impact" target="_blank">Genshin Impact</a>, <a href="https://www.google.com/search?q=Call+of+Duty+Mobile" target="_blank">Call of Duty: Mobile</a>, <a href="https://www.google.com/search?q=PUBG+Mobile" target="_blank">PUBG Mobile</a>. Mercado movimenta <a href="https://www.google.com/search?q=receita+mobile+gaming" target="_blank">bilhões anualmente</a>.</p>
+                </div>
+            </div>
+            
+            <h3>Serviços de Assinatura que Dominam o Mercado</h3>
+            <p>A atualidade é marcada pela ascensão dos serviços de games:</p>
+            <ul>
+                <li><a href="https://www.google.com/search?q=Xbox+Game+Pass+Netflix+games" target="_blank">Xbox Game Pass</a> - O "Netflix dos games" com mais de 25 milhões de assinantes</li>
+                <li><a href="https://www.google.com/search?q=PlayStation+Plus+Extra+Premium" target="_blank">PlayStation Plus</a> - Três tiers de serviço com catálogo extenso</li>
+                <li><a href="https://www.google.com/search?q=Nintendo+Switch+Online" target="_blank">Nintendo Switch Online</a> - Foco em jogos clássicos e multiplayer</li>
+                <li><a href="https://www.google.com/search?q=EA+Play+assinatura" target="_blank">EA Play</a> - Acesso à biblioteca da Electronic Arts</li>
+                <li><a href="https://www.google.com/search?q=Ubisoft+Connect" target="_blank">Ubisoft+</a> - Serviço focado nos títulos da Ubisoft</li>
+            </ul>
+            
+            <h3>Tecnologias que Moldam o Presente</h3>
+            <p>Inovações que definem a experiência moderna de jogar:</p>
+            <ul>
+                <li><a href="https://www.google.com/search?q=Ray+Tracing+iluminação+realista" target="_blank">Ray Tracing</a> - Iluminação e reflexos realistas em tempo real</li>
+                <li><a href="https://www.google.com/search?q=DLSS+upscaling+AI" target="_blank">DLSS/FSR</a> - Upscaling inteligente via IA para melhor performance</li>
+                <li><a href="https://www.google.com/search?q=SSD+velocidade+carregamento" target="_blank">SSDs de alta velocidade</a> - Praticamente elimina telas de carregamento</li>
+                <li><a href="https://www.google.com/search?q=4K+120fps+gaming" target="_blank">4K 120fps</a> - Alta resolução combinada com fluidez extrema</li>
+                <li><a href="https://www.google.com/search?q=VR+Realidade+Virtual+gaming" target="_blank">VR e Realidade Aumentada</a> - Experiências imersivas em crescimento</li>
+            </ul>
+            
+            <h3>Tendências Atuais do Mercado</h3>
+            <p>O cenário atual é definido por várias tendências importantes:</p>
+            <ul>
+                <li><a href="https://www.google.com/search?q=Live+Service+games" target="_blank">Games as a Service</a> - Títulos continuamente atualizados como Fortnite</li>
+                <li><a href="https://www.google.com/search?q=Remakes+remasters+atuais" target="_blank">Remakes e Remasters</a> - Clássicos revitalizados para novas gerações</li>
+                <li><a href="https://www.google.com/search?q=Cross+play+multiplayer" target="_blank">Cross-Play</a> - Jogadores de diferentes plataformas juntos</li>
+                <li><a href="https://www.google.com/search?q=Preservação+digital+games" target="_blank">Preservação Digital</a> - Esforços para manter jogos antigos acessíveis</li>
+                <li><a href="https://www.google.com/search?q=Sustentabilidade+indústria+games" target="_blank">Sustentabilidade</a> - Conscientização ambiental na indústria</li>
+            </ul>
+            
+            <h3>Desafios e Oportunidades da Atualidade</h3>
+            <p>A indústria enfrenta novos desafios enquanto explora oportunidades:</p>
+            <ul>
+                <li><a href="https://www.google.com/search?q=Crunch+cultura+trabalho+games" target="_blank">Condições de Trabalho</a> - Discussões sobre crunch e sindicalização</li>
+                <li><a href="https://www.google.com/search?q=Acessibilidade+games+design" target="_blank">Acessibilidade</a> - Recursos para jogadores com diferentes necessidades</li>
+                <li><a href="https://www.google.com/search?q=Diversidade+representação+games" target="_blank">Diversidade e Representação</a> - Personagens e histórias mais inclusivas</li>
+                <li><a href="https://www.google.com/search?q=Blockchain+NFT+games" target="_blank">Blockchain e NFTs</a> - Tecnologias controversas buscando espaço</li>
+                <li><a href="https://www.google.com/search?q=IA+desenvolvimento+games" target="_blank">Inteligência Artificial</a> - Ferramentas de IA no desenvolvimento</li>
+            </ul>
+            
+            <h3>O Futuro que Já Começou</h3>
+            <p>Estamos vivendo uma transição fundamental na forma como consumimos e interagimos com games. A atualidade é marcada pela democratização do acesso através de serviços, pela busca por experiências mais inclusivas e pela exploração de novas fronteiras tecnológicas.</p>
+            
+            <p>O mercado atual é o mais diversificado da história, com espaço para <a href="https://www.google.com/search?q=AA+games+mid-budget" target="_blank">jogos AA</a>, <a href="https://www.google.com/search?q=indie+games+sucesso" target="_blank">indies de sucesso</a> e <a href="https://www.google.com/search?q=AAA+games+orçamento" target="_blank">blockbusters AAA</a> coexistindo. A <a href="https://www.google.com/search?q=globalização+indústria+games" target="_blank">globalização completa da indústria</a> trouxe desenvolvedoras de todas as regiões do mundo para o centro do palco, enriquecendo o medium com perspectivas diversas.</p>
+            
+            <div class="search-links">
+                <h3>Pesquisar mais sobre:</h3>
+                <p>
+                    <a href="https://www.google.com/search?q=geração+atual+consoles+PS5+Xbox+Series" target="_blank" class="link-highlight">Geração Atual de Consoles</a> | 
+                    <a href="https://www.google.com/search?q=serviços+assinatura+games+Game+Pass" target="_blank" class="link-highlight">Serviços de Assinatura</a> | 
+                    <a href="https://www.google.com/search?q=cloud+gaming+streaming" target="_blank" class="link-highlight">Cloud Gaming e Streaming</a> | 
+                    <a href="https://www.google.com/search?q=tendências+atuais+indústria+games" target="_blank" class="link-highlight">Tendências Atuais da Indústria</a>
+                </p>
+            </div>
+            
+            <a href="index.html" class="btn-voltar-home">🏠 Voltar para a Página Principal</a>
+        </div>
+        
+        <footer>
+            <p>Trabalho sobre a História dos Videogames - Desenvolvido para fins educacionais</p>
+            <p>© 2023 - Todos os direitos reservados</p>
+        </footer>
+    </div>
+
+    <script>
+        // Adiciona comportamento de abertura em nova guia para todos os links externos
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('a[href^="http"]');
+            links.forEach(link => {
+                link.setAttribute('target', '_blank');
+                link.setAttribute('rel', 'noopener noreferrer');
+            });
+        });
+    </script>
+</body>
+</html>

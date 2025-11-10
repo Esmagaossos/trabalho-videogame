@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>História dos Videogames - Anos 2000</title>
+    <style>
+        :root {
+            --bg: #0b0d10;
+            --panel: #12161b;
+            --panel-2: #161c22;
+            --text: #e8eef5;
+            --muted: #a7b3c2;
+            --neon: #ff6600;
+            --neon-link: #ff9933;
+            --border: #22303b;
+            --shadow: 0 10px 30px rgba(0,0,0,.35);
+            --radius: 18px;
+            --max: 1100px;
+        }
+        
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            background: linear-gradient(180deg, var(--bg), #0f1318 50%, var(--bg));
+            color: var(--text);
+            font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container { 
+            max-width: var(--max); 
+            margin: auto; 
+            padding: 0 20px; 
+        }
+        
+        h1, h2 { 
+            color: var(--neon); 
+            animation: neon-glow 2s infinite alternate; 
+        }
+        
+        @keyframes neon-glow { 
+            from { text-shadow: 0 0 5px var(--neon),0 0 10px var(--neon);} 
+            to { text-shadow: 0 0 20px var(--neon),0 0 30px var(--neon); } 
+        }
+        
+        p { color: var(--text); }
+        a { color: var(--neon-link); text-decoration: none; font-weight: 600; transition: color 0.2s ease, text-shadow 0.2s ease; }
+        a:hover { color: var(--neon); text-shadow: 0 0 8px var(--neon),0 0 16px var(--neon); text-decoration: underline; }
+        
+        header { 
+            position: sticky; 
+            top: 0; 
+            z-index: 50; 
+            backdrop-filter: saturate(120%) blur(6px); 
+            background: linear-gradient(180deg, rgba(10,12,15,.92), rgba(10,12,15,.75)); 
+            border-bottom: 1px solid var(--border); 
+            margin-bottom: 30px;
+        }
+        
+        .topbar { 
+            display: flex; 
+            gap: 16px; 
+            align-items: center; 
+            justify-content: space-between; 
+            padding: 14px 0; 
+        }
+        
+        .brand { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+        }
+        
+        .logo { 
+            width: 36px; 
+            height: 36px; 
+            border-radius: 10px; 
+            background: radial-gradient(circle at 30% 30%, var(--neon), transparent 60%), radial-gradient(circle at 70% 70%, #ff3300, transparent 60%), linear-gradient(135deg, #0f1720, #0a0d12); 
+            box-shadow: 0 0 20px rgba(255,102,0,.25) inset, 0 0 20px rgba(255,153,51,.15) inset; 
+        }
+        
+        .brand h1 { 
+            font-size: 1.5rem; 
+            letter-spacing: .3px; 
+            margin: 0; 
+        }
+        
+        .content {
+            background: var(--panel);
+            border-radius: var(--radius);
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+        
+        .era-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .era-card {
+            background: var(--panel-2);
+            border-radius: var(--radius);
+            padding: 20px;
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease;
+        }
+        
+        .era-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .era-card h3 {
+            color: var(--neon);
+            margin-top: 0;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }
+        
+        .console-img {
+            width: 100%;
+            border-radius: 10px;
+            margin: 15px 0;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-voltar-home {
+            background: linear-gradient(45deg, var(--neon), var(--neon-link));
+            color: var(--bg);
+            padding: 12px 24px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 20px 0;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-voltar-home:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 102, 0, 0.4);
+        }
+        
+        footer { 
+            background: var(--panel-2); 
+            text-align: center; 
+            padding: 20px; 
+            margin-top: 40px; 
+            font-size: 0.9rem; 
+            border-top: 1px solid var(--border); 
+            color: var(--muted); 
+            border-radius: var(--radius);
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        .link-highlight {
+            background: rgba(255, 102, 0, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 102, 0, 0.3);
+        }
+        
+        .search-links {
+            margin-top: 30px;
+            background: var(--panel-2);
+            padding: 20px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+        
+        .search-links h3 {
+            color: var(--neon);
+            margin-top: 0;
+        }
+        
+        .search-links p {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .search-links a {
+            white-space: nowrap;
+        }
+        
+        @media (max-width: 768px) {
+            .era-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .topbar {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .search-links p {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="topbar">
+                <div class="brand">
+                    <div class="logo"></div>
+                    <h1>História dos Videogames</h1>
+                </div>
+            </div>
+        </header>
+        
+        <div class="content">
+            <h2>Anos 2000: A Revolução Online e HD</h2>
+            
+            <p>A década de 2000 marcou a transição para a era online e a chegada da alta definição aos videogames. Foi uma época de consolidação de franquias, expansão global do mercado e o surgimento de novas formas de jogar através de conectividade e serviços digitais.</p>
+            
+            <div class="era-grid">
+                <div class="era-card">
+                    <h3><a href="https://www.google.com/search?q=PlayStation+2+2000" target="_blank" class="link-highlight">PlayStation 2 (2000)</a></h3>
+                    <img src="img/PlayStation 2 2000.png" alt="PlayStation 2" class="console-img">
+                    <p>O <a href="https://www.google.com/search?q=console+mais+vendido+história" target="_blank">console mais vendido da história</a> com mais de 155 milhões de unidades. O PS2 popularizou o DVD, trouxe gráficos impressionantes e uma biblioteca diversificada com <a href="https://www.google.com/search?q=Grand+Theft+Auto+San+Andreas" target="_blank">GTA: San Andreas</a>, <a href="https://www.google.com/search?q=God+of+War+2005" target="_blank">God of War</a> e <a href="https://www.google.com/search?q=Shadow+of+the+Colossus" target="_blank">Shadow of the Colossus</a>.</p>
+                </div>
+                
+                <div class="era-card">
+                    <h3><a href="https://www.google.com/search?q=Xbox+2001" target="_blank" class="link-highlight">Xbox (2001)</a></h3>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Xbox-console.jpg/640px-Xbox-console.jpg" alt="Xbox Original" class="console-img">
+                    <p>A entrada da Microsoft no mercado de consoles. Com hardware poderoso, disco rígido integrado e o revolucionário <a href="https://www.google.com/search?q=Xbox+Live+2002" target="_blank">Xbox Live</a>, estabeleceu as bases para o sucesso futuro. <a href="https://www.google.com/search?q=Halo+Combat+Evolved" target="_blank">Halo: Combat Evolved</a> se tornou seu carro-chefe.</p>
+                </div>
+                
+                <div class="era-card">
+                    <h3><a href="https://www.google.com/search?q=Nintendo+GameCube+2001" target="_blank" class="link-highlight">Nintendo GameCube (2001)</a></h3>
+                    <img src="img/Nintendo GameCube 2001.png" alt="Nintendo GameCube" class="console-img">
+                    <p>A resposta da Nintendo à nova geração. Com <a href="https://www.google.com/search?q=GameCube+mini-DVD" target="_blank">mini-DVDs proprietários</a> e foco em experiências locais multiplayer. Destacou-se com <a href="https://www.google.com/search?q=Super+Smash+Bros+Melee" target="_blank">Super Smash Bros. Melee</a> e <a href="https://www.google.com/search?q=The+Legend+of+Zelda+The+Wind+Waker" target="_blank">The Legend of Zelda: The Wind Waker</a>.</p>
+                </div>
+            </div>
+
+            <div class="era-grid">
+                <div class="era-card">
+                    <h3><a href="https://www.google.com/search?q=Xbox+360+2005" target="_blank" class="link-highlight">Xbox 360 (2005)</a></h3>
+                    <img src="img/Xbox 360 2005.webp" alt="Xbox 360" class="console-img">
+                    <p>Popularizou a <a href="https://www.google.com/search?q=alta+definição+videogames" target="_blank">era HD nos games</a> e revolucionou os serviços online com o Xbox Live. Apesar dos problemas com <a href="https://www.google.com/search?q=Red+Ring+of+Death" target="_blank">Red Ring of Death</a>, foi um sucesso comercial com franquias como <a href="https://www.google.com/search?q=Gears+of+War" target="_blank">Gears of War</a> e <a href="https://www.google.com/search?q=Mass+Effect" target="_blank">Mass Effect</a>.</p>
+                </div>
+            
+                <div class="era-card">
+                    <h3><a href="https://www.google.com/search?q=PlayStation+3+2006" target="_blank" class="link-highlight">PlayStation 3 (2006)</a></h3>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/PS3Versions.png/640px-PS3Versions.png" alt="PlayStation 3" class="console-img">
+                    <p>Com o poderoso <a href="https://www.google.com/search?q=Cell+Processor+PS3" target="_blank">processador Cell</a> e leitor Blu-ray integrado. Teve início difícil devido ao preço alto, mas se recuperou com jogos aclamados como <a href="https://www.google.com/search?q=The+Last+of+Us" target="_blank">The Last of Us</a> e <a href="https://www.google.com/search?q=Uncharted+2" target="_blank">Uncharted 2</a>.</p>
+                </div>
+                
+                <div class="era-card">
+                    <h3><a href="https://www.google.com/search?q=Nintendo+Wii+2006" target="_blank" class="link-highlight">Nintendo Wii (2006)</a></h3>
+                    <img src="img/Nintendo Wii 2006.png" alt="Nintendo Wii" class="console-img">
+                    <p>Revolucionou o mercado com o <a href="https://www.google.com/search?q=Wii+Remote+controle+motion" target="_blank">controle por movimento</a>, atraindo um público casual nunca antes alcançado. <a href="https://www.google.com/search?q=Wii+Sports" target="_blank">Wii Sports</a> se tornou um fenômeno cultural e um dos jogos mais vendidos da história.</p>
+                </div>
+            </div>
+
+            <div class="era-grid">
+                <div class="era-card">
+                    <h3><a href="https://www.google.com/search?q=Nintendo+DS+2004" target="_blank" class="link-highlight">Nintendo DS (2004)</a></h3>
+                    <img src="img/Nintendo DS 2004.png" alt="Nintendo DS" class="console-img">
+                    <p>O portátil mais vendido da história com suas <a href="https://www.google.com/search?q=DS+touchscreen+dupla" target="_blank">duas telas, sendo uma touch</a>. Revolucionou os jogos portáteis com títulos como <a href="https://www.google.com/search?q=Nintendogs" target="_blank">Nintendogs</a> e <a href="https://www.google.com/search?q=Brain+Age" target="_blank">Brain Age</a>, expandindo o mercado.</p>
+                </div>
+                
+                <div class="era-card">
+                    <h3><a href="https://www.google.com/search?q=PSP+PlayStation+Portable+2004" target="_blank" class="link-highlight">PSP (2004)</a></h3>
+                    <img src="img/PSP PlayStation Portable 2004.jpg" alt="PSP PlayStation Portable" class="console-img">
+                    <p>A resposta da Sony aos portáteis da Nintendo. Com <a href="https://www.google.com/search?q=PSP+gráficos+avançados" target="_blank">gráficos avançados para a época</a> e capacidade multimídia, trouxe experiências de console para o formato portátil.</p>
+                </div>
+            </div>
+            
+            <h3>A Revolução Online</h3>
+            <p>Os anos 2000 transformaram os videogames em experiências sociais conectadas:</p>
+            <ul>
+                <li><a href="https://www.google.com/search?q=Xbox+Live+revolução+online" target="_blank">Xbox Live</a> - Padronizou o multiplayer online em consoles</li>
+                <li><a href="https://www.google.com/search?q=MMORPG+World+of+Warcraft" target="_blank">MMORPGs</a> - World of Warcraft se tornou um fenômeno cultural</li>
+                <li><a href="https://www.google.com/search?q=serviços+digitais+download+jogos" target="_blank">Serviços digitais</a> - PlayStation Network e Xbox Live Marketplace</li>
+                <li><a href="https://www.google.com/search?q=DLC+conteúdo+download" target="_blank">DLCs e expansões</a> - Nova forma de distribuir conteúdo</li>
+                <li><a href="https://www.google.com/search?q=achievements+troféus+consoles" target="_blank">Sistemas de conquistas</a> - Gamificação das experiências</li>
+            </ul>
+            
+            <h3>Gêneros e Inovações dos Anos 2000</h3>
+            <p>A década viu a evolução de gêneros existentes e o surgimento de novos:</p>
+            <ul>
+                <li><a href="https://www.google.com/search?q=battle+royale+early" target="_blank">Battle Royale</a> - Os primórdios com mods de ARMA 2</li>
+                <li><a href="https://www.google.com/search?q=survival+crafting+anos+2000" target="_blank">Survival Crafting</a> - Minecraft revolucionou o gênero</li>
+                <li><a href="https://www.google.com/search?q=MOBA+Defense+of+the+Ancients" target="_blank">MOBAs</a> - Nascidos de mods de Warcraft III</li>
+                <li><a href="https://www.google.com/search?q=narrativa+cinematográfica+games" target="_blank">Narrativas cinematográficas</a> - The Last of Us, Bioshock</li>
+                <li><a href="https://www.google.com/search?q=motion+gaming+Wii+Kinect" target="_blank">Controles por movimento</a> - Wii, Kinect e PlayStation Move</li>
+            </ul>
+            
+            <h3>Mudanças na Indústria</h3>
+            <p>A década trouxe transformações profundas no negócio dos games:</p>
+            <ul>
+                <li><a href="https://www.google.com/search?q=HD+gráficos+custos+desenvolvimento" target="_blank">Aumento dos custos</a> de desenvolvimento com a era HD</li>
+                <li><a href="https://www.google.com/search?q=consolidação+estúdios+anos+2000" target="_blank">Consolidação de estúdios</a> por grandes publicadoras</li>
+                <li><a href="https://www.google.com/search?q=mercado+independente+anos+2000" target="_blank">Surgimento do mercado independente</a> através de distribuição digital</li>
+                <li><a href="https://www.google.com/search?q=expansão+mercado+global+games" target="_blank">Expansão global</a> com forte crescimento na Ásia e América Latina</li>
+                <li><a href="https://www.google.com/search?q=esports+profissionalização+anos+2000" target="_blank">Profissionalização dos eSports</a></li>
+            </ul>
+            
+            <h3>O Legado dos Anos 2000</h3>
+            <p>A década de 2000 transformou os videogames de um entretenimento doméstico para uma plataforma de experiências conectadas globais. Foi a era onde o online se tornou essencial, os gráficos atingiram níveis cinematográficos e o mercado se expandiu para públicos nunca antes imaginados.</p>
+            
+            <p>Os anos 2000 também testemunharam a <a href="https://www.google.com/search?q=mudança+demográfica+jogadores+anos+2000" target="_blank">mudança demográfica dos jogadores</a>, com a geração que cresceu com videogames agora adulta e com poder aquisitivo. A década terminou com a Microsoft e Sony estabelecidas como líderes do mercado "core", enquanto a Nintendo criava seu próprio espaço com o público casual através do Wii e DS.</p>
+            
+            <div class="search-links">
+                <h3>Pesquisar mais sobre:</h3>
+                <p>
+                    <a href="https://www.google.com/search?q=história+dos+videogames+anos+2000" target="_blank" class="link-highlight">História dos Videogames anos 2000</a> | 
+                    <a href="https://www.google.com/search?q=consoles+sétima+geração" target="_blank" class="link-highlight">Consoles da Sétima Geração</a> | 
+                    <a href="https://www.google.com/search?q=revolução+online+videogames" target="_blank" class="link-highlight">Revolução Online nos Games</a> | 
+                    <a href="https://www.google.com/search?q=era+HD+dos+videogames" target="_blank" class="link-highlight">Era HD dos Videogames</a>
+                </p>
+            </div>
+            
+            <a href="index.html" class="btn-voltar-home">🏠 Voltar para a Página Principal</a>
+        </div>
+        
+        <footer>
+            <p>Trabalho sobre a História dos Videogames - Desenvolvido para fins educacionais</p>
+            <p>© 2023 - Todos os direitos reservados</p>
+        </footer>
+    </div>
+
+    <script>
+        // Adiciona comportamento de abertura em nova guia para todos os links externos
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('a[href^="http"]');
+            links.forEach(link => {
+                link.setAttribute('target', '_blank');
+                link.setAttribute('rel', 'noopener noreferrer');
+            });
+        });
+    </script>
+</body>
+</html>

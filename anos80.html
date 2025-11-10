@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>História dos Videogames - Anos 80</title>
+    <style>
+        :root {
+            --bg: #0b0d10;
+            --panel: #12161b;
+            --panel-2: #161c22;
+            --text: #e8eef5;
+            --muted: #a7b3c2;
+            --neon: #ff00a2;
+            --neon-link: #ff55ff;
+            --border: #22303b;
+            --shadow: 0 10px 30px rgba(0,0,0,.35);
+            --radius: 18px;
+            --max: 1100px;
+        }
+        
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            background: linear-gradient(180deg, var(--bg), #0f1318 50%, var(--bg));
+            color: var(--text);
+            font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container { 
+            max-width: var(--max); 
+            margin: auto; 
+            padding: 0 20px; 
+        }
+        
+        h1, h2 { 
+            color: var(--neon); 
+            animation: neon-glow 2s infinite alternate; 
+        }
+        
+        @keyframes neon-glow { 
+            from { text-shadow: 0 0 5px var(--neon),0 0 10px var(--neon);} 
+            to { text-shadow: 0 0 20px var(--neon),0 0 30px var(--neon); } 
+        }
+        
+        p { color: var(--text); }
+        a { color: var(--neon-link); text-decoration: none; font-weight: 600; transition: color 0.2s ease, text-shadow 0.2s ease; }
+        a:hover { color: var(--neon); text-shadow: 0 0 8px var(--neon),0 0 16px var(--neon); text-decoration: underline; }
+        
+        header { 
+            position: sticky; 
+            top: 0; 
+            z-index: 50; 
+            backdrop-filter: saturate(120%) blur(6px); 
+            background: linear-gradient(180deg, rgba(10,12,15,.92), rgba(10,12,15,.75)); 
+            border-bottom: 1px solid var(--border); 
+            margin-bottom: 30px;
+        }
+        
+        .topbar { 
+            display: flex; 
+            gap: 16px; 
+            align-items: center; 
+            justify-content: space-between; 
+            padding: 14px 0; 
+        }
+        
+        .brand { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+        }
+        
+        .logo { 
+            width: 36px; 
+            height: 36px; 
+            border-radius: 10px; 
+            background: radial-gradient(circle at 30% 30%, var(--neon), transparent 60%), radial-gradient(circle at 70% 70%, #f39, transparent 60%), linear-gradient(135deg, #0f1720, #0a0d12); 
+            box-shadow: 0 0 20px rgba(255,0,162,.25) inset, 0 0 20px rgba(255,85,255,.15) inset; 
+        }
+        
+        .brand h1 { 
+            font-size: 1.5rem; 
+            letter-spacing: .3px; 
+            margin: 0; 
+        }
+        
+        .content {
+            background: var(--panel);
+            border-radius: var(--radius);
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+        
+        .era-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .era-card {
+            background: var(--panel-2);
+            border-radius: var(--radius);
+            padding: 20px;
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease;
+        }
+        
+        .era-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .era-card h3 {
+            color: var(--neon);
+            margin-top: 0;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }
+        
+        .console-img {
+            width: 100%;
+            border-radius: 10px;
+            margin: 15px 0;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-voltar-home {
+            background: linear-gradient(45deg, var(--neon), var(--neon-link));
+            color: var(--bg);
+            padding: 12px 24px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 20px 0;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-voltar-home:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 0, 162, 0.4);
+        }
+        
+        footer { 
+            background: var(--panel-2); 
+            text-align: center; 
+            padding: 20px; 
+            margin-top: 40px; 
+            font-size: 0.9rem; 
+            border-top: 1px solid var(--border); 
+            color: var(--muted); 
+            border-radius: var(--radius);
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        .link-highlight {
+            background: rgba(255, 0, 162, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 0, 162, 0.3);
+        }
+        
+        .search-links {
+            margin-top: 30px;
+            background: var(--panel-2);
+            padding: 20px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+        
+        .search-links h3 {
+            color: var(--neon);
+            margin-top: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .era-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .topbar {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="topbar">
+                <div class="brand">
+                    <div class="logo"></div>
+                    <h1>História dos Videogames</h1>
+                </div>
+            </div>
+        </header>
+        
+        <div class="content">
+            <h2>Anos 80: A Era de Ouro dos Videogames</h2>
+            
+            <p>A década de 1980 foi um período revolucionário para a indústria dos videogames. Após a crise de 1983, o mercado se reergueu com inovações tecnológicas, o surgimento de franquias icônicas e a consolidação dos videogames como forma de entretenimento dominante.</p>
+            
+            <div class="era-grid">
+                <div class="era-card">
+                    <h3><a href="https://www.google.com/search?q=Nintendo+Entertainment+System+NES" target="_blank" class="link-highlight">Nintendo Entertainment System (1985)</a></h3>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/640px-NES-Console-Set.jpg" alt="Nintendo Entertainment System" class="console-img">
+                    <p>O <a href="https://www.google.com/search?q=NES+revolution+videogames" target="_blank">NES revolucionou a indústria</a> após a crise de 1983. Com jogos como <a href="https://www.google.com/search?q=Super+Mario+Bros+1985" target="_blank">Super Mario Bros.</a> e <a href="https://www.google.com/search?q=The+Legend+of+Zelda+1986" target="_blank">The Legend of Zelda</a>, a Nintendo estabeleceu padrões de qualidade e criatividade que definiram toda uma geração.</p>
+                </div>
+                
+                <div class="era-card">
+                    <h3><a href="https://www.google.com/search?q=Sega+Master+System" target="_blank" class="link-highlight">Sega Master System (1986)</a></h3>
+                    <img src="img/sega_master_system.jpg" alt="Sega Master System" class="console-img">
+                    <p>A resposta da Sega ao domínio da Nintendo. Apesar de menos popular na América do Norte, o Master System foi um sucesso em outras regiões, especialmente no Brasil e Europa, com jogos como <a href="https://www.google.com/search?q=Alex+Kidd+in+Miracle+World" target="_blank">Alex Kidd</a> e <a href="https://www.google.com/search?q=Phantasy+Star" target="_blank">Phantasy Star</a>.</p>
+                </div>
+                
+                <div class="era-card">
+                    <h3><a href="https://www.google.com/search?q=Game+Boy+1989" target="_blank" class="link-highlight">Game Boy (1989)</a></h3>
+                    <img src="img/videogame-Nintendo-Game-Boy-1.jpg" alt="Game Boy" class="console-img">
+                    <p>O console portátil que popularizou os jogos em qualquer lugar. Com <a href="https://www.google.com/search?q=Tetris+Game+Boy" target="_blank">Tetris</a> como título de lançamento e posteriormente <a href="https://www.google.com/search?q=Pokémon+Red+Blue" target="_blank">Pokémon</a>, o Game Boy se tornou um fenômeno cultural e um dos consoles mais vendidos da história.</p>
+                </div>
+            </div>
+            
+            <h3>O Nascimento de Franquias Icônicas</h3>
+            <p>Os anos 80 viram o surgimento de personagens e séries que se tornariam pilares da indústria:</p>
+            <ul>
+                <li><a href="https://www.google.com/search?q=Super+Mario+Bros+1985" target="_blank">Super Mario Bros.</a> (1985) - Revolucionou os jogos de plataforma</li>
+                <li><a href="https://www.google.com/search?q=The+Legend+of+Zelda+1986" target="_blank">The Legend of Zelda</a> (1986) - Pioneiro em aventuras de mundo aberto</li>
+                <li><a href="https://www.google.com/search?q=Metroid+1986" target="_blank">Metroid</a> (1986) - Estabeleceu o gênero metroidvania</li>
+                <li><a href="https://www.google.com/search?q=Final+Fantasy+1987" target="_blank">Final Fantasy</a> (1987) - Popularizou RPGs no Ocidente</li>
+                <li><a href="https://www.google.com/search?q=Mega+Man+1987" target="_blank">Mega Man</a> (1987) - Inovou com seleção de fases e poderes</li>
+                <li><a href="https://www.google.com/search?q=Castlevania+1986" target="_blank">Castlevania</a> (1986) - Definiu o gênero de ação/aventura gótica</li>
+            </ul>
+            
+            <h3>A Revolução dos Arcades</h3>
+            <p>Os fliperamas atingiram seu auge na década de 80, com jogos que se tornaram ícones culturais:</p>
+            <ul>
+                <li><a href="https://www.google.com/search?q=Pac-Man+1980" target="_blank">Pac-Man</a> (1980) - O primeiro personagem de videogame com apelo massivo</li>
+                <li><a href="https://www.google.com/search?q=Donkey+Kong+1981" target="_blank">Donkey Kong</a> (1981) - Introduziu Mario e os jogos de plataforma</li>
+                <li><a href="https://www.google.com/search?q=Space+Invaders+1978" target="_blank">Space Invaders</a> (1978) - Popularizou os shooters</li>
+                <li><a href="https://www.google.com/search?q=Galaga+1981" target="_blank">Galaga</a> (1981) - Evolução dos shooters espaciais</li>
+                <li><a href="https://www.google.com/search?q=Street+Fighter+1987" target="_blank">Street Fighter</a> (1987) - Pioneiro dos jogos de luta</li>
+            </ul>
+            
+            <h3>Inovações Tecnológicas</h3>
+            <p>A década trouxe avanços significativos que moldariam o futuro dos games:</p>
+            <ul>
+                <li><a href="https://www.google.com/search?q=gráficos+8+bits+anos+80" target="_blank">Grágicos em 8-bits</a> com cores e sprites mais detalhados</li>
+                <li><a href="https://www.google.com/search?q=som+digital+videogames+anos+80" target="_blank">Sons digitais</a> e trilhas sonoras memoráveis</li>
+                <li><a href="https://www.google.com/search?q=cartuchos+com+bateria+save+anos+80" target="_blank">Cartuchos com bateria</a> para salvar progresso</li>
+                <li><a href="https://www.google.com/search?q=controladores+com+mais+botões+anos+80" target="_blank">Controladores com mais botões</a> e designs ergonômicos</li>
+                <li><a href="https://www.google.com/search?q=portáteis+com+tela+LCD+anos+80" target="_blank">Sistemas portáteis</a> com telas LCD</li>
+            </ul>
+            
+            <h3>O Legado dos Anos 80</h3>
+            <p>A década de 1980 não apenas salvou a indústria de videogames do colapso, mas também estabeleceu fundamentos que permanecem até hoje. Foi uma era de criatividade explosiva, onde desenvolvedores exploravam as possibilidades da mídia sem as restrições de orçamentos astronômicos ou expectativas de grandes franquias.</p>
+            
+            <p>Os anos 80 também testemunharam a <a href="https://www.google.com/search?q=disputa+Nintendo+Sega+anos+80" target="_blank">rivalidade entre Nintendo e Sega</a>, que se intensificaria na década seguinte. A Nintendo dominou o mercado com políticas rigorosas de controle de qualidade, enquanto a Sega apostava em um marketing mais ousado e uma imagem "cool".</p>
+            
+            <div class="search-links">
+                <h3>Pesquisar mais sobre:</h3>
+                <p>
+                    <a href="https://www.google.com/search?q=história+dos+videogames+anos+80" target="_blank" class="link-highlight">História dos Videogames anos 80</a> | 
+                    <a href="https://www.google.com/search?q=jogos+clássicos+anos+80" target="_blank" class="link-highlight">Jogos clássicos anos 80</a> | 
+                    <a href="https://www.google.com/search?q=consoles+anos+80" target="_blank" class="link-highlight">Consoles anos 80</a> | 
+                    <a href="https://www.google.com/search?q=cultura+pop+anos+80+videogames" target="_blank" class="link-highlight">Cultura pop anos 80 e videogames</a>
+                </p>
+            </div>
+            
+            <a href="index.html" class="btn-voltar-home">🏠 Voltar para a Página Principal</a>
+        </div>
+        
+        <footer>
+            <p>Trabalho sobre a História dos Videogames - Desenvolvido para fins educacionais</p>
+            <p>© 2023 - Todos os direitos reservados</p>
+        </footer>
+    </div>
+
+    <script>
+        // Adiciona comportamento de abertura em nova guia para todos os links externos
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('a[href^="http"]');
+            links.forEach(link => {
+                link.setAttribute('target', '_blank');
+                link.setAttribute('rel', 'noopener noreferrer');
+            });
+        });
+    </script>
+</body>
+</html>

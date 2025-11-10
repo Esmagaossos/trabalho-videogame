@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>História dos Videogames - Anos 70</title>
+    <style>
+        :root {
+            --bg: #0b0d10;
+            --panel: #12161b;
+            --panel-2: #161c22;
+            --text: #e8eef5;
+            --muted: #a7b3c2;
+            --neon: #00ffa2;
+            --neon-link: #00ffff;
+            --border: #22303b;
+            --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+            --radius: 18px;
+            --max: 1100px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: linear-gradient(180deg, var(--bg), #0f1318 50%, var(--bg));
+            color: var(--text);
+            font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: var(--max);
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        h1,
+        h2 {
+            color: var(--neon);
+            animation: neon-glow 2s infinite alternate;
+        }
+
+        @keyframes neon-glow {
+            from {
+                text-shadow: 0 0 5px var(--neon), 0 0 10px var(--neon);
+            }
+
+            to {
+                text-shadow: 0 0 20px var(--neon), 0 0 30px var(--neon);
+            }
+        }
+
+        p {
+            color: var(--text);
+        }
+
+        a {
+            color: var(--neon-link);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s ease, text-shadow 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--neon);
+            text-shadow: 0 0 8px var(--neon), 0 0 16px var(--neon);
+            text-decoration: underline;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: saturate(120%) blur(6px);
+            background: linear-gradient(180deg, rgba(10, 12, 15, .92), rgba(10, 12, 15, .75));
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 30px;
+        }
+
+        .topbar {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 0;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: radial-gradient(circle at 30% 30%, var(--neon), transparent 60%), radial-gradient(circle at 70% 70%, #39f, transparent 60%), linear-gradient(135deg, #0f1720, #0a0d12);
+            box-shadow: 0 0 20px rgba(0, 255, 162, .25) inset, 0 0 20px rgba(51, 153, 255, .15) inset;
+        }
+
+        .brand h1 {
+            font-size: 1.5rem;
+            letter-spacing: .3px;
+            margin: 0;
+        }
+
+        .content {
+            background: var(--panel);
+            border-radius: var(--radius);
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .era-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .era-card {
+            background: var(--panel-2);
+            border-radius: var(--radius);
+            padding: 20px;
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease;
+        }
+
+        .era-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .era-card h3 {
+            color: var(--neon);
+            margin-top: 0;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }
+
+        .console-img {
+            width: 100%;
+            border-radius: 10px;
+            margin: 15px 0;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-voltar-home {
+            background: linear-gradient(45deg, var(--neon), var(--neon-link));
+            color: var(--bg);
+            padding: 12px 24px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 20px 0;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-voltar-home:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 255, 162, 0.4);
+        }
+
+        footer {
+            background: var(--panel-2);
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            border-radius: var(--radius);
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .link-highlight {
+            background: rgba(0, 255, 162, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            border: 1px solid rgba(0, 255, 162, 0.3);
+        }
+
+        .search-links {
+            margin-top: 30px;
+            background: var(--panel-2);
+            padding: 20px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+
+        .search-links h3 {
+            color: var(--neon);
+            margin-top: 0;
+        }
+
+        @media (max-width: 768px) {
+            .era-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .topbar {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="topbar">
+                <div class="brand">
+                    <div class="logo"></div>
+                    <h1>História dos Videogames</h1>
+                </div>
+            </div>
+        </header>
+
+        <div class="content">
+            <h2>Anos 70: O Nascamento da Indústria de Videogames</h2>
+
+            <p>A década de 1970 testemunhou o nascimento da indústria de videogames como a conhecemos hoje. Foi uma era
+                de experimentação, inovação e descoberta, onde visionários transformaram conceitos abstratos em
+                entretenimento interativo.</p>
+
+            <div class="era-grid">
+                <div class="era-card">
+                    <h3><a href="https://www.google.com/search?q=Magnavox+Odyssey+1972" target="_blank"
+                            class="link-highlight">Magnavox Odyssey (1972)</a></h3>
+                    <img src="img/magnavox.jpg"
+                        alt="Magnavox Odyssey" class="console-img">
+                    <p>Desenvolvido por <a href="https://www.google.com/search?q=Ralph+Baer+pai+dos+videogames"
+                            target="_blank">Ralph Baer</a>, conhecido como o "Pai dos Videogames", o Odyssey foi o
+                        primeiro console doméstico da história. Ele vinha com jogos pré-programados e utilizava overlays
+                        de plástico para serem colocados sobre a TV, criando diferentes ambientes de jogo.</p>
+                </div>
+
+                <div class="era-card">
+                    <h3><a href="https://www.google.com/search?q=Pong+arcade+1972" target="_blank"
+                            class="link-highlight">Pong e o Sucesso Arcade (1972)</a></h3>
+                    <img src="img/PongArcade.jpg"
+                        alt="Pong Arcade" class="console-img">
+                    <p>Lançado pela <a href="https://www.google.com/search?q=Atari+história" target="_blank">Atari</a>,
+                        Pong se tornou o primeiro jogo de videogame a alcançar sucesso comercial massivo. Sua
+                        simplicidade - simular um jogo de tênis de mesa - cativou o público e inaugurou a era dos
+                        fliperamas.</p>
+                </div>
+
+                <div class="era-card">
+                    <h3><a href="https://www.google.com/search?q=Atari+2600+1977" target="_blank"
+                            class="link-highlight">Atari 2600 (1977)</a></h3>
+                    <img src="img/71HESRbyxDL.jpg"
+                        alt="Atari 2600" class="console-img">
+                    <p>Originalmente chamado de Atari VCS (Video Computer System), o 2600 popularizou o uso de cartuchos
+                        intercambiáveis, permitindo que os consumidores ampliassem suas bibliotecas de jogos. Títulos
+                        como <a href="https://www.google.com/search?q=Combat+Atari+2600" target="_blank">Combat</a>, <a
+                            href="https://www.google.com/search?q=Adventure+Atari+2600" target="_blank">Adventure</a> e
+                        <a href="https://www.google.com/search?q=Pitfall+Atari+2600" target="_blank">Pitfall!</a> se
+                        tornaram clássicos instantâneos.</p>
+                </div>
+            </div>
+
+            <h3>Inovações Tecnológicas</h3>
+            <p>Os anos 70 introduziram conceitos fundamentais que moldariam a indústria:</p>
+            <ul>
+                <li><a href="https://www.google.com/search?q=Microprocessadores+dedicados+para+jogos+anos+70"
+                        target="_blank">Microprocessadores dedicados</a> para jogos</li>
+                <li><a href="https://www.google.com/search?q=Controladores+manuais+joysticks+paddles+anos+70"
+                        target="_blank">Controladores manuais</a> (joysticks e paddles)</li>
+                <li><a href="https://www.google.com/search?q=Gráficos+rasterizados+televisores+domésticos+anos+70"
+                        target="_blank">Gráficos rasterizados</a> em televisores domésticos</li>
+                <li><a href="https://www.google.com/search?q=Cartuchos+jogos+intercambiáveis+anos+70"
+                        target="_blank">Cartuchos de jogos intercambiáveis</a></li>
+                <li><a href="https://www.google.com/search?q=Armazenamento+pontuações+high+score+anos+70"
+                        target="_blank">Armazenamento de pontuações high score</a></li>
+            </ul>
+
+            <h3>Legado dos Anos 70</h3>
+            <p>A década estabeleceu as bases para toda a indústria de games. Apesar da <a
+                    href="https://www.google.com/search?q=crise+dos+videogames+1977" target="_blank">crise dos
+                    videogames em 1977</a> - quando o mercado ficou saturado com consoles de baixa qualidade - a Atari
+                2600 revitalizou o interesse do público e preparou o terreno para a era de ouro dos anos 80.</p>
+
+            <p>Os anos 70 não foram apenas sobre tecnologia; foram sobre a descoberta de que os computadores poderiam
+                ser divertidos e acessíveis, não apenas ferramentas para negócios ou pesquisa acadêmica.</p>
+
+            <div class="search-links">
+                <h3>Pesquisar mais sobre:</h3>
+                <p>
+                    <a href="https://www.google.com/search?q=história+dos+videogames+anos+70" target="_blank"
+                        class="link-highlight">História dos Videogames anos 70</a> |
+                    <a href="https://www.google.com/search?q=jogos+clássicos+anos+70" target="_blank"
+                        class="link-highlight">Jogos clássicos anos 70</a> |
+                    <a href="https://www.google.com/search?q=consoles+antigos+anos+70" target="_blank"
+                        class="link-highlight">Consoles antigos anos 70</a> |
+                    <a href="https://www.google.com/search?q=evolução+dos+videogames" target="_blank"
+                        class="link-highlight">Evolução dos videogames</a>
+                </p>
+            </div>
+
+            <a href="index.html" class="btn-voltar-home">🏠 Voltar para a Página Principal</a>
+        </div>
+
+        <footer>
+            <p>Trabalho sobre a História dos Videogames - Desenvolvido para fins educacionais</p>
+            <p>© 2023 - Todos os direitos reservados</p>
+        </footer>
+    </div>
+
+    <script>
+        // Adiciona comportamento de abertura em nova guia para todos os links externos
+        document.addEventListener('DOMContentLoaded', function () {
+            const links = document.querySelectorAll('a[href^="http"]');
+            links.forEach(link => {
+                link.setAttribute('target', '_blank');
+                link.setAttribute('rel', 'noopener noreferrer');
+            });
+        });
+    </script>
+</body>
+
+</html>
